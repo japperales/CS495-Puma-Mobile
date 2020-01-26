@@ -29,7 +29,7 @@ const App: () => React$Node = () => {
   return (
 
       <LinearGradient
-          colors={["#45b3e0", "#4566e0"]}
+          colors={["#0575E6", "#021B79"]}
           style={{
             position: 'absolute',
             left: 0,
@@ -37,7 +37,7 @@ const App: () => React$Node = () => {
             bottom: 0,
             height: "100%",
           }}>
-        <Text>
+        <Text style={{fontFamily: "Lato-BlackItalic", fontSize: 36}}>
           yay
         </Text>
       </LinearGradient>
