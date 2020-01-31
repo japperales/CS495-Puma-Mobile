@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Button } from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
-import PortfolioTable from './PortfolioTable';
+import PortfolioTable from '../Components/PortfolioTable';
 
 const CurrentPortfolioScreen = (props) => {
 
