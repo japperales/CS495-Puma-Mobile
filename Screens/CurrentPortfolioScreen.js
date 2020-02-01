@@ -4,7 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import PortfolioTable from '../Components/PortfolioTable';
 
 const CurrentPortfolioScreen = (props) => {
-
+// displays the current portfolio in a table
     return(
         <View style={{flex: 1, alignItems: "center"}}>
             <LinearGradient

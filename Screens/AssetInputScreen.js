@@ -11,16 +11,17 @@ import LinearGradient from 'react-native-linear-gradient';
 import PortfolioContext from '../contexts/PortfolioContext';
 
 const AssetInputScreen = (props) => {
+    //hooks used to keep track of the inputs' values
     const [assetCode, setAssetCode] = useState("");
     const [symbol, setSymbol] = useState("");
     const [issue, setIssue] = useState("");
     const [issuer, setIssuer] = useState("");
     const [units, setUnits] = useState("");
-
+    //context pulled for the current portfolio and a method to set it
     const portfolioContext = useContext(PortfolioContext);
     const portfolio = portfolioContext[0];
     const setPortfolio = portfolioContext[1];
-
+    //method that adds an object containing the current values of the fields to the current protfolio context
     const addAsset = (event) => {
             setPortfolio([...portfolio, {
                 assetCode: assetCode,

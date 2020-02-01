@@ -11,14 +11,16 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 const LoginScreen: () => React$Node = (props) => {
-
+    //hooks to track the input fields' values
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    //loginError hook tracks if there is a login error to be displayed
     const [loginError, setLoginError] = useState();
+    //import the token context to set the token for use by other screens
     const tokenContext = useContext(TokenContext);
     const setToken = tokenContext[1];
 
-
+    //fetch method for requesting a token using the login field's username and password values
     const attemptLogin = (event) => {
         const login ={username, password};
         fetch('http://10.0.2.2:5000/api/Puma/PostLogin', {
@@ -30,14 +32,18 @@ const LoginScreen: () => React$Node = (props) => {
         }).then(response =>response.json())
             .then(responseJson => {
                 if (typeof responseJson.Jwt === undefined) {
+                    //if the request return something that doesn't have a jwt token, then the request failed and a login error is displayed
                     setLoginError("LoginScreen Failed. Please Try Again")
                 } else {
+                    //if the request succeeded and has a token, then the context token is set and any login error being displayed is erased
                     setToken(responseJson.Jwt);
                     setLoginError("");
+                    //after a successful login attempt, the app then navigates to the asset input screen with the token
                     props.navigation.navigate('Input', {token: responseJson.Jwt});
                 }
                 })
             .catch(function(error) {
+                //in case some miscellaneous error occurs with the fetch request, it will be documented here in the console
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 setLoginError("Login Failed. Please Try Again");
                 return error;

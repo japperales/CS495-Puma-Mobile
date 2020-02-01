@@ -37,8 +37,9 @@ const columns = [
         width: 75
     },
 ];
-
+//table for displaying the portfolio on the current portfolio screen
 const PortfolioTable = (props) => {
+    //displays the current portfolio pulled from the global
     const portfolioContext = useContext(PortfolioContext);
     const currentPortfolio = portfolioContext[0];
 

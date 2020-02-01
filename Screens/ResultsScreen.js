@@ -41,15 +41,15 @@ const columns = [
 ];
 
 const ResultsScreen = (props) => {
+    //retrieve the token context for use with the submission request
     const tokenContext = useContext(TokenContext);
     const token = tokenContext[0];
-
+    //retrieve the portfolio context to send in the submission request
     const portfolioContext = useContext(PortfolioContext);
     const currentPortfolio = portfolioContext[0];
-
+    //response hook for use in displaying the data. The response is cast to this hook once it is received from the backend.
     const [response, setResponse] = useState([[],[],"0", "0"]);
-    const [trades, setTrades] = useState([]);
-
+    //fetch method for sending the current portfolio to the backend, and receiving the revised portfolio as the response
     const submitPortfolio = () => {
 
         const requestPortfolio = convertPortfolioToSubmissionsFormat();
@@ -70,7 +70,7 @@ const ResultsScreen = (props) => {
                 return error;
             });
     };
-
+    // method for formatting the current portfolio assets into the format that the backend can successfully process
     const convertPortfolioToSubmissionsFormat = () => {
         const submittablePortfolio = [];
 
